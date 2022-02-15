@@ -32,6 +32,7 @@ function RowPost(props) {
             
             if(response.data.results.length!==0){
                 setUrlId(response.data.results[0])
+                
             }else{
                 console.log("Array empty")
             }
@@ -39,17 +40,19 @@ function RowPost(props) {
     }
     return (
         <div className='row'>
+            <h2>{props.original_title}</h2>
             <h2>{props.title}</h2>
             <div className='posters'>
         
                 {movies.map((obj)=>
+                
 
                 <img onClick={()=>handleMovie(obj.id)
 
                 } className={props.isSmall ? 'smallposter' : 'poster'} alt='poster' src={`${imageUrl+obj.backdrop_path}`} />
                 )}
                 
-               
+                
                 
             </div>
            {urlId && <YouTube opts={opts} videoId={urlId.key}/> }
