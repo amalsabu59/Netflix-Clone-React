@@ -27,7 +27,7 @@ function RowPost(props) {
         },
     }
     const handleMovie =(id)=>{
-        console.log(id)
+        //console.log(name)
         axios.get(`movie/${id}/videos?api_key=${API_KEY_HERE}&language=en-US`).then(response=>{
             
             if(response.data.results.length!==0){
@@ -40,22 +40,28 @@ function RowPost(props) {
     }
     return (
         <div className='row'>
-            <h2>{props.original_title}</h2>
             <h2>{props.title}</h2>
             <div className='posters'>
+
         
                 {movies.map((obj)=>
+
                 
 
                 <img onClick={()=>handleMovie(obj.id)
 
-                } className={props.isSmall ? 'smallposter' : 'poster'} alt='poster' src={`${imageUrl+obj.backdrop_path}`} />
+                } className={props.isSmall ? 'smallposter' : 'poster'} alt='poster' src={`${imageUrl+obj.poster_path}`} />
+            
+                
                 )}
                 
                 
                 
             </div>
            {urlId && <YouTube opts={opts} videoId={urlId.key}/> }
+
+        
+           
         </div>
     )
 }
